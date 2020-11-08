@@ -32,6 +32,17 @@ const generateMap = function(siteSettings, opts) {
 
   L.tileLayer(siteSettings.location_map_tile_layer, tileOpts).addTo(map);
 
+  let tileOpts2 = {
+    attribution: siteSettings.location_map_attribution2,
+  };
+
+  const subdomains2 = siteSettings.location_map_tile_layer_subdomains2;
+  if (subdomains2) {
+    tileOpts['subdomains'] = subdomains;
+  }
+
+  L.tileLayer(siteSettings.location_map_tile_layer2, tileOpts2).addTo(map);
+
   L.Icon.Default.imagePath = '/plugins/discourse-locations/leaflet/images/';
 
   L.control.zoom({ position: 'bottomleft' }).addTo(map);
